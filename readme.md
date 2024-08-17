@@ -22,7 +22,7 @@ Movie Studio adalah sebuah aplikasi web yang memungkinkan pengguna mencari film 
 1. **Clone Repository**:
 
    ```bash
-   git clone <URL_REPOSITORY>
+   git clone https://github.com/Shinta505/Movie-Studio
    cd <NAMA_FOLDER_REPOSITORY>
    ```
 2. **Jalankan Aplikasi**:
