@@ -1,5 +1,8 @@
 # Movie Studio
 
+![Screenshot 2024-09-14 220817](https://github.com/user-attachments/assets/5cccaa09-5c08-41c6-b120-c80ec2a6a0fb)
+
+
 Movie Studio adalah sebuah aplikasi web yang memungkinkan pengguna mencari film dan mendapatkan detail informasi tentang film yang dicari. Aplikasi ini menggunakan API OMDb untuk mengakses data film dan menampilkan hasil pencarian dalam bentuk kartu. Pengguna juga dapat melihat detail film dengan mengklik tombol "Details" pada setiap kartu film.
 
 ## Fitur
