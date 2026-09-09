@@ -1,7 +1,7 @@
 const main = document.querySelector("#main");
 
 function OnChangeSearch(searchParam, page = 1) {
-    const apikey = "98f03ad5";
+    const apikey = "6732fbe5";
     axios.get(`https://www.omdbapi.com/?apikey=${apikey}&s=${searchParam}&page=${page}`)
         .then((response) => {
             const movies = response.data.Search;
