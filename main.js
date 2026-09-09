@@ -1,6 +1,7 @@
 const main = document.querySelector("#main");
 
 function OnChangeSearch(searchParam, page = 1) {
+    if (!searchParam) return; // Mencegah pencarian kosong
     const apikey = "6732fbe5";
     axios.get(`https://www.omdbapi.com/?apikey=${apikey}&s=${searchParam}&page=${page}`)
         .then((response) => {
@@ -90,16 +91,19 @@ const modalDetail = (data) => {
 };
 
 const input = document.getElementById("search");
-const btnSearch = document.getElementById("btn-search");
-btnSearch.addEventListener("click", () => {
-    OnChangeSearch(input.value);
-    input.value = ""; // Mengosongkan kolom input setelah pencarian
+const form = document.getElementById("form");
+let currentPage = 1;
+const currentPageDisplay = document.getElementById('current'); // Ubah jadi getElementById supaya langsung merujuk ke elemen
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    currentPage = 1;
+    currentPageDisplay.innerText = currentPage;
+    OnChangeSearch(input.value, currentPage);
 });
 
 const nextPage = document.getElementById("next");
 const prevPage = document.getElementById("prev");
-const currentPageDisplay = document.getElementsByClassName('current');
-let currentPage = 1;
 
 nextPage.addEventListener('click', () => {
     currentPage++;
@@ -113,10 +117,4 @@ prevPage.addEventListener('click', () => {
         currentPageDisplay.innerText = currentPage;
         OnChangeSearch(input.value, currentPage);
     }
-});
-
-input.addEventListener('blur', () => {
-    currentPage = 1;
-    currentPageDisplay.innerText = currentPage;
-    OnChangeSearch(input.value, currentPage);
 });
