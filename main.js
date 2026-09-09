@@ -1,9 +1,11 @@
 const main = document.querySelector("#main");
 
 function OnChangeSearch(searchParam, page = 1) {
-    if (!searchParam) return; // Mencegah pencarian kosong
+    // Jika searchParam kosong, berikan nilai default "action"
+    const query = searchParam ? searchParam : "action"; 
     const apikey = "6732fbe5";
-    axios.get(`https://www.omdbapi.com/?apikey=${apikey}&s=${searchParam}&page=${page}`)
+    
+    axios.get(`https://www.omdbapi.com/?apikey=${apikey}&s=${query}&page=${page}`)
         .then((response) => {
             const movies = response.data.Search;
             if (!movies) {
@@ -93,7 +95,7 @@ const modalDetail = (data) => {
 const input = document.getElementById("search");
 const form = document.getElementById("form");
 let currentPage = 1;
-const currentPageDisplay = document.getElementById('current'); // Ubah jadi getElementById supaya langsung merujuk ke elemen
+const currentPageDisplay = document.getElementById('current');
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -118,3 +120,6 @@ prevPage.addEventListener('click', () => {
         OnChangeSearch(input.value, currentPage);
     }
 });
+
+// Jalankan otomatis saat halaman pertama kali dimuat
+OnChangeSearch("action", 1);
